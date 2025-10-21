@@ -1,4 +1,4 @@
-import Foundation
+import ApplicationServices.HIServices
 
 extension AXValue {
     func toValue<T>() -> T? {

@@ -17,13 +17,12 @@ final class Observer {
     }
 
     private func state(for flags: NSEvent.ModifierFlags) -> FlagState {
-        let hasMain = flags.contains(.control) && flags.contains(.option)
-        let hasShift = flags.contains(.shift)
-
-        if hasMain && hasShift {
+        // lets just check the resizing case: if our flags are exactly Control+Option+Shift.
+        let desiredFlags: NSEvent.ModifierFlags  = [.control, .option, .shift]
+        let relevantFlags: NSEvent.ModifierFlags = flags.intersection(.deviceIndependentFlagsMask)
+        
+        if relevantFlags == desiredFlags {
             return .Resize
-        } else if hasMain {
-            return .Drag
         } else {
             return .Ignore
         }
