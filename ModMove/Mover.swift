@@ -109,8 +109,8 @@ final class Mover {
         newSize.width = max(newSize.width, 100)
         newSize.height = max(newSize.height, 100)
 
-        window.size = newSize
         window.position = newPosition
+        window.size = newSize
     }
 
     private func moveWindow(window: AccessibilityElement, mouseDelta: CGPoint) {
